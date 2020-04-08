@@ -25,10 +25,12 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     Button loginButton, registerButton;
+    TextView txtname, txtversion;
     EditText edtEmail,edtPassword;
     String email,password;
     Intent intent;
-
+    SharedPreferences preference;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
         registerButton = findViewById(R.id.bntToRegister);
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
+        txtname = findViewById(R.id.mainTxtAppName);
+        txtversion = findViewById(R.id.mainTxtAppVersion);
+        preference = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        editor = preference.edit();
+        txtname.setText(preference.getString("appName", null));
+        txtversion.setText(preference.getString("appVersion", null));
     }
 
     public void handleLoginClick(View view) {
@@ -53,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if(response.isSuccessful()){
-                    SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                    SharedPreferences.Editor editor = preference.edit();
                     editor.putString("token",response.body().getToken());
                     editor.apply();
                     Intent i = new Intent(getApplicationContext(),ProfileActivity.class);
