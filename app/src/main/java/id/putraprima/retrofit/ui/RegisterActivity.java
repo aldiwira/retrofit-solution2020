@@ -64,7 +64,15 @@ public class RegisterActivity extends AppCompatActivity {
                 }else {
                     status = false;
                     ApiError error = ErrorUtils.parseError(response);
-                    snackbarmaker(error.getError().getEmail().get(0));
+                    if (eName.getText().toString().isEmpty()){
+                        snackbarmaker(error.getError().getName().get(0));
+                    }else if (eEmail.getText().toString().isEmpty()){
+                        snackbarmaker(error.getError().getEmail().get(0));
+                    }else if (ePassword.getText().toString().length() <= 8){
+                        snackbarmaker(error.getError().getPassword().get(0));
+                    }else if(ePassword.getText() != eConfirmPassword.getText()){
+                        snackbarmaker("Password yang anda masukan tidak sama");
+                    }
                 }
             }
 

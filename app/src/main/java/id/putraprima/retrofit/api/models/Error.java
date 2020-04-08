@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class Error {
 
-    @SerializedName("email")
-    @Expose
-    private List<String> email = null;
-
     @SerializedName("name")
     @Expose
     private List<String> name = null;
+
+    @SerializedName("email")
+    @Expose
+    private List<String> email = null;
 
     @SerializedName("password")
     @Expose
