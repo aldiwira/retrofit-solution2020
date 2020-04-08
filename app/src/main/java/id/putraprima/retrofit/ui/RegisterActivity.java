@@ -10,11 +10,8 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import java.net.Inet4Address;
-
 import id.putraprima.retrofit.R;
 import id.putraprima.retrofit.api.helper.ServiceGenerator;
-import id.putraprima.retrofit.api.helper.NotifMaker;
 import id.putraprima.retrofit.api.models.ApiError;
 import id.putraprima.retrofit.api.models.Envelope;
 import id.putraprima.retrofit.api.models.ErrorUtils;
@@ -67,8 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }else {
                     status = false;
                     ApiError error = ErrorUtils.parseError(response);
-                    snackbarmaker(error.getError().getName().get(0));
-
+                    snackbarmaker(error.getError().getEmail().get(0));
                 }
             }
 
@@ -83,6 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
         Snackbar.make(getWindow().getDecorView().getRootView(), arg, Snackbar.LENGTH_SHORT).show();
     }
     public void handleRegisterProcess(View view) {
+        setup_data();
         doRegister();
         if(status) {
             intent = new Intent(RegisterActivity.this, MainActivity.class);

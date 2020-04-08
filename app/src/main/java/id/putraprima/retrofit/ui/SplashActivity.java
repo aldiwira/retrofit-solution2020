@@ -10,14 +10,12 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
 import id.putraprima.retrofit.R;
-import id.putraprima.retrofit.api.helper.NotifMaker;
 import id.putraprima.retrofit.api.helper.ServiceGenerator;
 import id.putraprima.retrofit.api.models.AppVersion;
 import id.putraprima.retrofit.api.services.ApiInterface;
@@ -28,7 +26,6 @@ import retrofit2.Response;
 public class SplashActivity extends AppCompatActivity {
     TextView lblAppName, lblAppTittle, lblAppVersion;
     Context context;
-    NotifMaker notifMaker;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
