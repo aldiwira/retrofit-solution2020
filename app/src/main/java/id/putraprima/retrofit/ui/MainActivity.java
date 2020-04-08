@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     Button loginButton, registerButton;
     EditText edtEmail,edtPassword;
     String email,password;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,5 +70,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Gagal Koneksi", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void handleRegister(View view) {
+        intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 }
