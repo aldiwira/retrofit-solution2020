@@ -48,9 +48,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void handleLoginClick(View view) {
-        email = edtEmail.getText().toString();
-        password = edtPassword.getText().toString();
-        doLogin();
+//        email = edtEmail.getText().toString();
+//        password = edtPassword.getText().toString();
+//        doLogin();
+        intent = new Intent(MainActivity.this, RecipeActivity.class);
+        startActivity(intent);
     }
 
     private void doLogin() {
